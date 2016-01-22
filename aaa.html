@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="bootstrap.css">
+	<meta charset="UTF-8">
+	<title> CONTACT MANAGER </title>
+	
+</head>
+<body background="images/2.jpg">
+	<div id="main">
+	<header>
+		<div id = "banner">
+			<div id = "welcome">
+			<h3>SAMPLE CONTACT MANAGER <h3>
+			<p> HERE WE CREATED A SAMPLE CONTACT MANAGER WITH THE HELP OF BACKBONE.JS , BOOTSTRAP, JQUERY</p>
+			</div>
+		</div>
+	</div>
+	</header>
+	
+	<div class="container">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>NAME</th>
+					<th>CITY</th>
+					<th>EMAIL</th>
+					<th>Action</th>
+				</tr>
+				<tr>
+					<td><input class="form-control name-input"></td>
+					<td><input class="form-control city-input"></td>
+					<td><input class="form-control email-input"></td>
+					<td><button class="btn btn-primary add-contact">Add</button></td>
+				</tr>
+			</thead>
+			<tbody class="contacts-list"></tbody>
+		</table>
+	</div>
+
+	<script type="text/template" class="contacts-list-template">
+	<td><span class="name"><%= name %></span></td>
+	<td><span class="city"><%= city %></span></td>
+	<td><span class="email"><%= email %></span></td>
+	<td><button class="btn btn-warning edit-contact">Edit</button> <button class="btn btn-danger delete-contact">Delete</button>
+	<button class="btn btn-success update-contact" style="display:none">Update</button> 
+	<button class="btn btn-danger cancel" style="display:none">Cancel</button></td>
+
+	</script>
+	
+	
+	<script src="jquery.js"> </script>
+	<script src="underscore.js"> </script>
+	<script src="backbone.js"> </script>
+	<script src="script.js"> </script>
+	
+	
+	  <script>
+    var objConnection = new ActiveXObject("adodb.connection");
+    var strConn = "driver={sql server};server=QITBLRQIPL030;database=adventureworks;uid=sa;password=12345";
+    objConnection.Open(strConn);
+    var rs = new ActiveXObject("ADODB.Recordset");
+    var strQuery = "SELECT * FROM  Person.Address";
+    rs.Open(strQuery, objConnection);
+    rs.MoveFirst();
+    while (!rs.EOF) {
+        document.write(rs.fields(0) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        document.write(rs.fields(1) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+        document.write(rs.fields(2) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ");
+        
+        rs.movenext();
+    }
+</script>
+
+</body>
+</html>
